@@ -25,7 +25,7 @@ RUN ./configure --prefix=/usr/local/nginx \
 RUN make
 RUN make install
 
-FROM alpine:3.5
+FROM alpine:3.6
 RUN apk add --no-cache ca-certificates openssl pcre zlib ffmpeg
 COPY --from=build /usr/local/nginx /usr/local/nginx
 RUN rm -rf /usr/local/nginx/html /usr/loca/nginx/conf/*.default
