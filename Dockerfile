@@ -3,7 +3,7 @@ FROM alpine:3.6 as build
 RUN apk add --no-cache curl build-base openssl openssl-dev zlib-dev linux-headers pcre-dev ffmpeg ffmpeg-dev
 RUN mkdir nginx nginx-vod-module
 
-ENV NGINX_VERSION 1.12.1
+ENV NGINX_VERSION 1.12.2
 ENV VOD_MODULE_VERSION 1.20
 
 RUN curl -sL https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz | tar -C nginx --strip 1 -xz
