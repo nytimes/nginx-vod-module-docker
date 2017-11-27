@@ -19,6 +19,7 @@ WORKDIR nginx
 RUN ./configure --prefix=/usr/local/nginx \
 	--add-module=../nginx-vod-module \
 	--add-module=../nginx-upstream-dynamic-servers \
+	--with-http_ssl_module \
 	--with-file-aio \
 	--with-threads \
 	--with-cc-opt="-O3"
