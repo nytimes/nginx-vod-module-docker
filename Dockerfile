@@ -17,6 +17,7 @@ RUN curl -sL https://github.com/GUI/nginx-upstream-dynamic-servers/archive/${DYN
 
 WORKDIR nginx
 RUN ./configure --prefix=/usr/local/nginx \
+	--add-module=../with-http_ssl_module \
 	--add-module=../nginx-vod-module \
 	--add-module=../nginx-upstream-dynamic-servers \
 	--with-file-aio \
