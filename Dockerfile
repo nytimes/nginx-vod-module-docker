@@ -4,7 +4,7 @@ RUN apk add --no-cache curl build-base openssl openssl-dev zlib-dev linux-header
 RUN mkdir nginx nginx-vod-module nginx-upstream-dynamic-servers
 
 ENV NGINX_VERSION 1.12.2
-ENV VOD_MODULE_VERSION 1.20
+ENV VOD_MODULE_VERSION 1.22
 
 # This is the commit that makes nginx-upstream-dynamic-servers compatible with
 # nginx 1.12.1, once there's a release of the module, we can start using a
