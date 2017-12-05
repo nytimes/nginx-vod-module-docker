@@ -1,4 +1,4 @@
-FROM alpine:3.6 as build
+FROM alpine:3.7 as build
 
 RUN apk add --no-cache curl build-base openssl openssl-dev zlib-dev linux-headers pcre-dev ffmpeg ffmpeg-dev
 RUN mkdir nginx nginx-vod-module nginx-upstream-dynamic-servers
@@ -26,7 +26,7 @@ RUN ./configure --prefix=/usr/local/nginx \
 RUN make
 RUN make install
 
-FROM alpine:3.6
+FROM alpine:3.7
 RUN apk add --no-cache ca-certificates openssl pcre zlib ffmpeg
 COPY --from=build /usr/local/nginx /usr/local/nginx
 RUN rm -rf /usr/local/nginx/html /usr/local/nginx/conf/*.default
