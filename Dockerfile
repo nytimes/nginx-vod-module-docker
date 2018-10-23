@@ -6,12 +6,12 @@ RUN apk add --no-cache curl build-base openssl openssl-dev zlib-dev linux-header
 RUN mkdir nginx nginx-vod-module
 
 ENV NGINX_VERSION 1.14.0
-ENV VOD_MODULE_VERSION 1.23
+ENV VOD_MODULE_VERSION 1.24
 
-RUN curl -sL https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz | tar -C nginx --strip 1 -xz
-RUN curl -sL https://github.com/kaltura/nginx-vod-module/archive/${VOD_MODULE_VERSION}.tar.gz | tar -C nginx-vod-module --strip 1 -xz
+RUN curl -sL https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz | tar -C /nginx --strip 1 -xz
+RUN curl -sL https://github.com/kaltura/nginx-vod-module/archive/${VOD_MODULE_VERSION}.tar.gz | tar -C /nginx-vod-module --strip 1 -xz
 
-WORKDIR nginx
+WORKDIR /nginx
 RUN ./configure --prefix=/usr/local/nginx \
 	--add-module=../nginx-vod-module \
 	--with-http_ssl_module \
