@@ -20,10 +20,10 @@ RUN ./configure --prefix=/usr/local/nginx \
 	--with-cc-opt="-O3"
 RUN make
 RUN make install
+RUN rm -rf /usr/local/nginx/html /usr/local/nginx/conf/*.default
 
 FROM base_image
 RUN apk add --no-cache ca-certificates openssl pcre zlib ffmpeg
 COPY --from=build /usr/local/nginx /usr/local/nginx
-RUN rm -rf /usr/local/nginx/html /usr/local/nginx/conf/*.default
 ENTRYPOINT ["/usr/local/nginx/sbin/nginx"]
 CMD ["-g", "daemon off;"]
