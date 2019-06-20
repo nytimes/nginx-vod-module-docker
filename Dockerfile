@@ -1,4 +1,4 @@
-FROM alpine:3.9 AS base_image
+FROM alpine:3.10 AS base_image
 
 FROM base_image AS build
 
