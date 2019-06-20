@@ -1,7 +1,7 @@
 nginx-vod-module-docker
 =======================
 
-[![Build Status](https://cloud.drone.io/api/badges/nytimes/gcs-helper/status.svg)](https://cloud.drone.io/nytimes/gcs-helper)
+[![Build Status](https://cloud.drone.io/api/badges/nytimes/nginx-vod-module-docker/status.svg)](https://cloud.drone.io/nytimes/nginx-vod-module-docker)
 
 This repository contains a Dockerfile for building nginx with [Kaltura's
 vod-module](https://github.com/kaltura/nginx-vod-module).
