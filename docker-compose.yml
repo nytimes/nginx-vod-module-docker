@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  nginx:
+    image: nytimes/nginx-vod-module
+    container_name: nginx_vod
+    ports:
+      - "3030:80"
+    volumes:
+      - ./examples/videos:/opt/static/videos
+      - ./examples/nginx.conf:/usr/local/nginx/conf/nginx.conf
+      - ./examples/logs:/var/log/nginx
+    entrypoint: >
+      sh -c "mkdir -p /var/lib/nginx/body && chmod 777 /var/lib/nginx/body && exec /usr/local/nginx/sbin/nginx -g 'daemon off;'"

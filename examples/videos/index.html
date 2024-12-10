@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Player</title>
+</head>
+<body>
+  <h1>Video Player</h1>
+  <video id="video" controls width="640" height="360">
+    <source src="http://localhost:3030/videos/devito360p.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+<!--  <video id="video2" controls width="640" height="360">-->
+<!--    <source src="http://localhost:3030/videos/devito480p.mp4" type="video/mp4">-->
+<!--    Your browser does not support the video tag.-->
+<!--  </video>-->
+<!--  <video id="video3" controls width="640" height="360">-->
+<!--    <source src="http://localhost:3030/videos/devito720p.mp4" type="video/mp4">-->
+<!--    Your browser does not support the video tag.-->
+<!--  </video>-->
+
+  <script>
+    const video = document.getElementById('video');
+
+    // Логирование на паузе
+    video.addEventListener('pause', () => {
+      console.log('Video paused at:', video.currentTime);
+      // Отправка данных на сервер
+      fetch('/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event: 'pause', time: video.currentTime }),
+      });
+    });
+
+    // Логирование перемотки
+    video.addEventListener('seeked', () => {
+      console.log('Video seeked to:', video.currentTime);
+      fetch('/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event: 'seeked', time: video.currentTime }),
+      });
+    });
+  </script>
+</body>
+</html>

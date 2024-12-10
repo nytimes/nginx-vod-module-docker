@@ -2,6 +2,8 @@ FROM alpine:3.12.0 AS base_image
 
 FROM base_image AS build
 
+RUN mkdir -p /var/lib/nginx/body && chmod 777 /var/lib/nginx/body
+
 RUN apk add --no-cache curl build-base openssl openssl-dev zlib-dev linux-headers pcre-dev ffmpeg ffmpeg-dev
 RUN mkdir nginx nginx-vod-module
 
